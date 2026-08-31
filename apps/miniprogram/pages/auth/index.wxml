@@ -1,0 +1,51 @@
+<view class="page-shell safe-bottom auth-page">
+  <view class="auth-intro card">
+    <view class="intro-step">01</view>
+    <view class="flex-1">
+      <view class="intro-title">完成新就业形态劳动者认证</view>
+      <view class="intro-desc">提交后即可学习、参与抢单；审核通过后开放商城兑换与现金类权益。</view>
+    </view>
+  </view>
+
+  <view class="section-head"><view class="section-title">选择身份</view><view class="caption">必填</view></view>
+  <view class="identity-grid">
+    <view class="identity-card {{riderType === '外卖骑手' ? 'active' : ''}}" data-value="外卖骑手" bind:tap="chooseRider">
+      <view class="identity-icon delivery">外</view>
+      <view class="identity-name">外卖骑手</view>
+      <view class="identity-check">{{riderType === '外卖骑手' ? '✓' : ''}}</view>
+    </view>
+    <view class="identity-card {{riderType === '快递员' ? 'active' : ''}}" data-value="快递员" bind:tap="chooseRider">
+      <view class="identity-icon express">快</view>
+      <view class="identity-name">快递员</view>
+      <view class="identity-check">{{riderType === '快递员' ? '✓' : ''}}</view>
+    </view>
+  </view>
+
+  <view class="section-head"><view class="section-title">认证材料</view><view class="caption">三选一</view></view>
+  <view class="proof-card card">
+    <view class="proof-list">
+      <view class="proof-item {{proofType === '平台接单截图' ? 'active' : ''}}" data-value="平台接单截图" bind:tap="chooseProof">
+        <view class="radio"><view class="radio-dot"></view></view><view class="flex-1"><view class="proof-title">平台接单截图</view><view class="caption">需包含姓名或工号</view></view>
+      </view>
+      <view class="divider"></view>
+      <view class="proof-item {{proofType === '工作证 / 工牌照片' ? 'active' : ''}}" data-value="工作证 / 工牌照片" bind:tap="chooseProof">
+        <view class="radio"><view class="radio-dot"></view></view><view class="flex-1"><view class="proof-title">工作证 / 工牌照片</view><view class="caption">清晰拍摄正面信息</view></view>
+      </view>
+      <view class="divider"></view>
+      <view class="proof-item {{proofType === '工会会员信息截图' ? 'active' : ''}}" data-value="工会会员信息截图" bind:tap="chooseProof">
+        <view class="radio"><view class="radio-dot"></view></view><view class="flex-1"><view class="proof-title">工会会员信息截图</view><view class="caption">可用于辅助身份审核</view></view>
+      </view>
+    </view>
+
+    <view class="upload-zone {{uploaded ? 'uploaded' : ''}}" bind:tap="mockUpload">
+      <view class="upload-mark">{{uploaded ? '✓' : '+'}}</view>
+      <view class="upload-title">{{uploaded ? '示例材料已添加' : '点击添加认证材料'}}</view>
+      <view class="caption">{{uploaded ? '原型不上传真实文件，可重新点击替换' : '支持图片，正式版将接入安全上传'}}</view>
+    </view>
+  </view>
+
+  <view class="privacy-tip">认证材料仅用于身份审核，正式系统将按数据安全要求存储与脱敏展示。</view>
+  <view class="primary-button-wrap">
+    <t-button theme="primary" block size="large" loading="{{submitting}}" bind:tap="submit">提交认证</t-button>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+<view class="product-page safe-bottom" wx:if="{{product && user}}">
+  <view class="detail-visual {{product.iconClass}}">
+    <view class="visual-label">{{product.category}}</view>
+    <view class="detail-icon">{{product.iconText}}</view>
+    <view class="visual-stock">库存 {{product.stock}}</view>
+  </view>
+
+  <view class="detail-body">
+    <view class="detail-main card">
+      <view class="detail-title">{{product.name}}</view>
+      <view class="detail-summary">{{product.summary}}</view>
+      <view class="price-line">
+        <view><text class="price-number">{{product.coinPrice}}</text><text class="price-unit"> 金币</text><text wx:if="{{product.priceType === 'COIN_CASH'}}" class="cash-price"> + ¥{{product.cashPrice}}</text></view>
+        <view class="price-type">{{product.priceType === 'COIN' ? '纯金币' : '金币 + 现金'}}</view>
+      </view>
+    </view>
+
+    <view class="rule-card card">
+      <view class="rule-title">使用规则</view>
+      <view class="rule-text">{{product.rule}}</view>
+      <view class="rule-item"><view class="rule-dot"></view><view>兑换时校验金币余额与库存</view></view>
+      <view class="rule-item"><view class="rule-dot"></view><view>成功后生成唯一兑换码 / 二维码</view></view>
+      <view class="rule-item"><view class="rule-dot"></view><view>当前页面为 UI 原型，不产生真实交易</view></view>
+    </view>
+
+    <view class="auth-lock" wx:if="{{user.authStatus !== 'VERIFIED'}}">
+      <view class="lock-mark">审</view><view class="flex-1"><view class="lock-title">认证审核通过后可兑换</view><view class="caption">你仍可以浏览商品与规则，不会误触资金/权益操作</view></view>
+    </view>
+
+    <view class="primary-button-wrap"><t-button theme="primary" block size="large" bind:tap="redeem">{{user.authStatus !== 'VERIFIED' ? '审核通过后可兑换' : product.priceType === 'COIN_CASH' ? '金币 + 现金暂未开放' : '模拟兑换确认'}}</t-button></view>
+    <view class="balance-note">当前金币：{{user.coins}} · {{user.coins >= product.coinPrice ? '余额充足' : '金币不足，继续学习可获得'}}</view>
+  </view>
+</view>

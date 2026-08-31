@@ -1,0 +1,27 @@
+<view class="result-page safe-bottom" wx:if="{{settlement}}">
+  <view class="result-hero {{settlement.passed ? 'passed' : 'failed'}}">
+    <view class="result-icon">{{settlement.passed ? '✓' : '!'}}</view>
+    <view class="result-kicker">{{settlement.passed ? '学习任务完成' : '还差一点点'}}</view>
+    <view class="result-title">{{settlement.passed ? '今日打卡，稳稳拿下' : '再答一次就能领取奖励'}}</view>
+    <view class="score-line"><text>{{settlement.correctCount}}</text> / {{settlement.total}} 题正确 · 正确率 {{settlement.accuracy}}%</view>
+  </view>
+
+  <view class="result-body">
+    <view class="reward-card card" wx:if="{{settlement.passed}}">
+      <view class="reward-head"><view><view class="reward-kicker">本次奖励</view><view class="reward-title">必得金币 + 随机红包</view></view><view class="reward-seal">奖</view></view>
+      <view class="reward-grid">
+        <view class="reward-item"><view class="reward-symbol coin-symbol">G</view><view><view class="reward-value">+{{settlement.coinReward}}</view><view class="caption">金币</view></view></view>
+        <view class="reward-item"><view class="reward-symbol red-symbol">¥</view><view><view class="reward-value">{{settlement.redpackHit ? '+' + settlement.redpackAmount : '未命中'}}</view><view class="caption">{{settlement.redpackHit ? '红包（Mock）' : '本次红包'}}</view></view></view>
+      </view>
+      <view class="reward-tip">{{settlement.redpackHit ? '有一点小惊喜！开发阶段仅展示 Mock 金额，不触发真实资金。' : '金币已经稳稳拿到，红包下次继续碰运气。'}}</view>
+    </view>
+
+    <view class="result-summary card" wx:else>
+      <view class="summary-title">本次答对 {{settlement.correctCount}} 题</view>
+      <view class="muted summary-desc">达到通过线后才会结算金币与红包。你可以立即再试一次。</view>
+    </view>
+
+    <view class="primary-button-wrap"><t-button theme="primary" block size="large" bind:tap="claim">{{settlement.passed ? '打卡并领取' : '重新答题'}}</t-button></view>
+    <view class="result-rule">金币与红包分账；速度仅用于排行榜，不影响本次奖励金额。</view>
+  </view>
+</view>

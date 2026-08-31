@@ -1,0 +1,4 @@
+{
+  "desc": "Mock UI prototype sitemap",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

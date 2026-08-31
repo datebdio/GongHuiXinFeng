@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "lib": ["ES2020", "DOM"],
+    "types": [],
+    "baseUrl": "."
+  },
+  "include": ["**/*.ts", "types/**/*.d.ts"],
+  "exclude": ["miniprogram_npm", "node_modules"]
+}

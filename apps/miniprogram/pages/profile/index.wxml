@@ -1,0 +1,43 @@
+<view class="profile-page safe-bottom" wx:if="{{user}}">
+  <view class="profile-hero">
+    <view class="profile-top">
+      <view class="avatar-large">锋</view>
+      <view class="flex-1 profile-copy">
+        <view class="profile-name">{{user.nickname}}</view>
+        <view class="profile-no">新锋编号 {{user.riderNo}}</view>
+        <view class="profile-tags"><view class="profile-tag">{{user.riderType}}</view><view class="profile-tag auth">{{user.authStatus === 'VERIFIED' ? '已认证' : user.authStatus === 'PENDING' ? '审核中' : '待认证'}}</view></view>
+      </view>
+      <view class="profile-arrow">›</view>
+    </view>
+
+    <view class="level-panel">
+      <view><view class="level-kicker">当前等级</view><view class="level-name">{{user.level}}</view><view class="level-progress-text">累计获得 {{user.lifetimeCoins}} 金币</view></view>
+      <view class="level-badge">锋</view>
+    </view>
+  </view>
+
+  <view class="assets-card card">
+    <view class="asset-item"><view class="asset-value gold">{{user.coins}}</view><view class="asset-label">可用金币</view></view>
+    <view class="asset-divider"></view>
+    <view class="asset-item"><view class="asset-value red">¥{{user.redpackBalance}}</view><view class="asset-label">红包余额（Mock）</view></view>
+    <view class="asset-divider"></view>
+    <view class="asset-item"><view class="asset-value">{{user.streakDays}}</view><view class="asset-label">连续打卡/天</view></view>
+  </view>
+
+  <view class="menu-card card">
+    <view wx:for="{{menu}}" wx:key="title" class="menu-row" data-index="{{index}}" bind:tap="tapMenu">
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="flex-1"><view class="menu-title">{{item.title}}</view><view class="menu-subtitle">{{item.subtitle}}</view></view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="debug-card profile-debug">
+    <view class="debug-title">原型演示 · 身份权限切换（用于验证 D-AUTH-001）</view>
+    <view class="debug-actions">
+      <view class="debug-auth {{user.authStatus === 'PENDING' ? 'active' : ''}}" data-status="PENDING" bind:tap="setAuth">审核中</view>
+      <view class="debug-auth {{user.authStatus === 'VERIFIED' ? 'active' : ''}}" data-status="VERIFIED" bind:tap="setAuth">已认证</view>
+    </view>
+    <view class="debug-copy">审核中：可学习/抢单/浏览商城；已认证：才允许进入实际兑换与现金类权益。</view>
+  </view>
+</view>

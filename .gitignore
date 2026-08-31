@@ -1,0 +1,7 @@
+node_modules/
+apps/miniprogram/node_modules/
+apps/miniprogram/miniprogram_npm/
+*.log
+.DS_Store
+.tmp/
+dist/

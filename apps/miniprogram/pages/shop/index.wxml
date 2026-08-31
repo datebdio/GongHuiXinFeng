@@ -1,0 +1,39 @@
+<view class="shop-page safe-bottom" wx:if="{{user}}">
+  <view class="shop-hero">
+    <view>
+      <view class="shop-kicker">工会福利 · 金币有用处</view>
+      <view class="shop-title">把每次学习，<br/>换成生活里的小确幸</view>
+      <view class="coin-balance"><text>{{user.coins}}</text> 可用金币</view>
+    </view>
+    <view class="hero-gift"><view class="gift-top"></view><view class="gift-body">惠</view></view>
+  </view>
+
+  <view class="auth-banner {{user.authStatus === 'VERIFIED' ? 'verified' : ''}}">
+    <view class="auth-mark">{{user.authStatus === 'VERIFIED' ? '✓' : '审'}}</view>
+    <view class="flex-1"><view class="auth-title">{{user.authStatus === 'VERIFIED' ? '身份已认证，可兑换权益' : '身份审核中，可先逛商城'}}</view><view class="auth-desc">{{user.authStatus === 'VERIFIED' ? '兑换将校验金币与库存' : '审核通过后开放商品兑换与现金类权益'}}</view></view>
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x enable-flex>
+    <view class="category-row">
+      <view wx:for="{{categories}}" wx:key="*this" class="category-pill {{activeCategory === item ? 'active' : ''}}" data-category="{{item}}" bind:tap="chooseCategory">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="product-grid">
+    <view wx:for="{{products}}" wx:key="id" class="product-card" data-id="{{item.id}}" bind:tap="openProduct">
+      <view class="product-visual {{item.iconClass}}"><view class="product-icon-text">{{item.iconText}}</view><view class="stock-chip">余 {{item.stock}}</view></view>
+      <view class="product-body">
+        <view class="product-category">{{item.category}}</view>
+        <view class="product-name">{{item.name}}</view>
+        <view class="product-price"><text>{{item.coinPrice}}</text> 金币 <text wx:if="{{item.priceType === 'COIN_CASH'}}" class="cash">+ ¥{{item.cashPrice}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="shop-rule card">
+    <view class="rule-title">兑换说明</view>
+    <view class="rule-line"><text>01</text> 首期优先跑通纯金币兑换闭环</view>
+    <view class="rule-line"><text>02</text> “金币 + 现金”商品先保留结构，真实支付后接</view>
+    <view class="rule-line"><text>03</text> 当前原型不产生真实订单、资金或核销码</view>
+  </view>
+</view>

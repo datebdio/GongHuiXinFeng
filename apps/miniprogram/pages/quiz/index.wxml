@@ -1,0 +1,23 @@
+<view class="page-shell quiz-page safe-bottom">
+  <view class="quiz-top row between">
+    <view><view class="quiz-kicker">工会知识 · 3 题挑战</view><view class="quiz-progress">第 <text>{{current + 1}}</text> / {{questions.length}} 题</view></view>
+    <view class="quiz-timer"><view class="timer-label">剩余</view><view class="timer-value">{{remaining}}s</view></view>
+  </view>
+
+  <view class="step-track"><view class="step-fill" style="width: {{((current + 1) / questions.length) * 100}}%;"></view></view>
+
+  <view class="question-card card">
+    <view class="question-no">Q{{current + 1}}</view>
+    <view class="question-title">{{questions[current].title}}</view>
+    <view class="option-list">
+      <view wx:for="{{questions[current].options}}" wx:key="index" class="option {{selected === index ? 'selected' : ''}}" data-index="{{index}}" bind:tap="choose">
+        <view class="option-letter">{{letters[index]}}</view>
+        <view class="flex-1 option-text">{{item}}</view>
+        <view class="option-check">{{selected === index ? '✓' : ''}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quiz-note">答题速度只用于排行榜，MVP 不改变奖励金额。</view>
+  <view class="primary-button-wrap"><t-button theme="primary" block size="large" disabled="{{selected < 0}}" bind:tap="next">{{current === questions.length - 1 ? '提交答案' : '下一题'}}</t-button></view>
+</view>

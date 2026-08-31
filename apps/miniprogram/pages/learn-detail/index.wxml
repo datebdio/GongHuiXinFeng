@@ -1,0 +1,36 @@
+<view class="page-shell learn-page safe-bottom">
+  <view class="task-status" wx:if="{{source === 'grab'}}">
+    <view class="task-dot"></view><view class="flex-1"><view class="task-title">抢单任务进行中</view><view class="caption">学习 + 答题需在保留时间内完成</view></view><view class="task-clock">{{taskTime}}</view>
+  </view>
+
+  <view class="media-card">
+    <view class="media-badge">1 分钟 · 权益学习</view>
+    <view class="media-center" bind:tap="simulatePlay">
+      <view class="play-button">{{playing ? 'Ⅱ' : completed ? '✓' : '▶'}}</view>
+      <view class="media-action">{{completed ? '学习完成' : playing ? '正在学习…' : '点击开始学习'}}</view>
+    </view>
+    <view class="media-city city-left"></view><view class="media-city city-mid"></view><view class="media-city city-right"></view>
+  </view>
+
+  <view class="progress-card card">
+    <view class="row between"><view class="progress-title">学习进度</view><view class="progress-value">{{progress}}%</view></view>
+    <view class="progress-track"><view class="progress-fill" style="width: {{progress}}%;"></view></view>
+    <view class="progress-note">原型以本地模拟播放展示流程，正式版使用微信原生 video / audio 能力。</view>
+  </view>
+
+  <view class="content-card card">
+    <view class="content-kicker">今日主题</view>
+    <view class="content-title">跑在城市里，也要知道这些暖“新”权益</view>
+    <view class="content-paragraph">工会服务不仅在办公室里。新就业形态劳动者可以通过驿站、线上咨询、活动服务等渠道获得更便捷的支持。</view>
+    <view class="knowledge-list">
+      <view class="knowledge-item"><view class="knowledge-no">01</view><view>遇到劳动权益问题，可主动联系工会寻求帮助。</view></view>
+      <view class="knowledge-item"><view class="knowledge-no">02</view><view>学习内容保持轻量，利用等单、休息等碎片时间完成。</view></view>
+      <view class="knowledge-item"><view class="knowledge-no">03</view><view>金币是平台权益货币，用于兑换商品或服务，不可直接提现。</view></view>
+    </view>
+  </view>
+
+  <view class="primary-button-wrap">
+    <t-button theme="primary" block size="large" disabled="{{!completed}}" bind:tap="goQuiz">{{completed ? '开始答题' : '完成学习后答题'}}</t-button>
+  </view>
+  <view class="mock-finish" wx:if="{{!completed}}" bind:tap="finishNow">原型演示：立即完成 1 分钟学习</view>
+</view>
