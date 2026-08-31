@@ -8,15 +8,17 @@ Codex 每轮只执行一个任务。完成后勾选并在 PR/commit 中引用任
 - [x] T002 确认 P0 决策并冻结 PRD v1.0
 
 ## Phase 1 — Mock UI 原型
-- [ ] T101 建立微信原生小程序 TypeScript + TDesign 工程
-- [ ] T102 建立统一主题、间距、字体、卡片、按钮、状态色规范
-- [ ] T103 P-U01/P-U02 登录与身份认证 Mock UI
-- [ ] T104 P-U03 首页/抢单 Mock UI（五种按钮状态）
-- [ ] T105 P-U05 学习详情 Mock UI（视频/语音）
-- [ ] T106 P-U06/P-U07 答题与结果 Mock UI
-- [ ] T107 P-U08/P-U09 商城与商品详情 Mock UI
-- [ ] T108 P-U12 个人中心 Mock UI
+- [x] T101 建立微信原生小程序 TypeScript + TDesign 工程
+- [x] T102 建立统一主题、间距、字体、卡片、按钮、状态色规范
+- [x] T103 P-U01/P-U02 登录与身份认证 Mock UI
+- [x] T104 P-U03 首页/抢单 Mock UI（五种按钮状态）
+- [x] T105 P-U05 学习详情 Mock UI（视频/语音）
+- [x] T106 P-U06/P-U07 答题与结果 Mock UI
+- [x] T107 P-U08/P-U09 商城与商品详情 Mock UI
+- [x] T108 P-U12 个人中心 Mock UI
 - [ ] T109 串联第一批页面 Mock 演示闭环并在微信开发者工具验收
+  - [x] 沙盒自动验收：TypeScript、JSON/WXML 结构、五种抢单状态、答题奖励、认证权限门禁
+  - [ ] 微信开发者工具实际导入/构建 npm/真机视觉验收（沙盒无微信开发者工具，暂不虚报完成）
 - [ ] T110 根据客户反馈冻结 UI v1
 
 ## Phase 2 — 工程骨架

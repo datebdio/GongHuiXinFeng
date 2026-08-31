@@ -1,0 +1,15 @@
+{
+  "name": "gonghuixinfeng",
+  "version": "0.1.0",
+  "private": true,
+  "description": "工惠新锋微信小程序 Mock UI 原型",
+  "scripts": {
+    "typecheck": "tsc -p apps/miniprogram/tsconfig.json --noEmit",
+    "validate:miniprogram": "node scripts/validate-miniprogram.mjs",
+    "test:mock": "bash scripts/mock-flow-smoke.sh",
+    "test": "npm run typecheck && npm run validate:miniprogram && npm run test:mock"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
