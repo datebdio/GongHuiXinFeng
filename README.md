@@ -54,6 +54,10 @@ npm install
 4. 编译运行。当前 `appid` 为 `touristappid`，实际项目联调时替换为工会小程序 AppID。
 5. 按 `docs/UI_PROTOTYPE.md` 的场景逐项验收。
 
+`project.config.json` 已启用微信开发者工具的 TypeScript 编译插件 `useCompilerPlugins: ["typescript"]`。如果开发者工具仍提示 `pages/.../index.js` 不存在，请先确认已拉取最新 `main`，然后关闭项目并重新导入一次，让开发者工具重新读取项目配置。
+
+如果随后提示 `tdesign-miniprogram/...` 组件不存在，说明 npm 依赖尚未生成：先在 `apps/miniprogram` 执行 `npm install`，再在微信开发者工具执行 **工具 → 构建 npm**。
+
 > 沙盒已验证 TDesign 1.16.0 包内 `button/tag/progress` 组件文件存在；但沙盒没有微信开发者工具，因此 T109 的“开发者工具实际导入/真机视觉验收”仍保持未完成状态。
 
 ## 目录
