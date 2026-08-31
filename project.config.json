@@ -22,7 +22,13 @@
     "useApiHostProcess": true,
     "showShadowRootInWxmlPanel": true,
     "nodeModules": true,
-    "packNpmManually": false,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./apps/miniprogram/package.json",
+        "miniprogramNpmDistDir": "./apps/miniprogram/"
+      }
+    ],
     "enableEngineNative": false,
     "useIsolateContext": true,
     "minifyWXSS": false,
