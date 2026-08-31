@@ -33,6 +33,5 @@
     "t-tag": "tdesign-miniprogram/tag/tag",
     "t-progress": "tdesign-miniprogram/progress/progress"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
