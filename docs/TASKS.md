@@ -5,7 +5,7 @@ Codex 每轮只执行一个任务。完成后勾选并在 PR/commit 中引用任
 ## Phase 0 — 需求基线
 - [x] T000 初始化仓库
 - [x] T001 建立开发版 PRD、业务规则、页面、数据模型、验收标准、决策表
-- [ ] T002 确认 P0 决策并冻结 PRD v1.0
+- [x] T002 确认 P0 决策并冻结 PRD v1.0
 
 ## Phase 1 — Mock UI 原型
 - [ ] T101 建立微信原生小程序 TypeScript + TDesign 工程
