@@ -42,23 +42,40 @@ npm test
 
 ## 微信开发者工具运行
 
-1. 安装依赖：
+### 第一次导入必须先安装并构建 npm
+
+在仓库根目录打开 CMD / PowerShell：
 
 ```bash
 cd apps/miniprogram
 npm install
 ```
 
-2. 用微信开发者工具打开**仓库根目录**，工具会读取 `project.config.json`。
-3. 执行 **工具 → 构建 npm**，生成 `miniprogram_npm`。
-4. 编译运行。当前 `appid` 为 `touristappid`，实际项目联调时替换为工会小程序 AppID。
-5. 按 `docs/UI_PROTOTYPE.md` 的场景逐项验收。
+确认出现 `apps/miniprogram/node_modules/tdesign-miniprogram` 后，再进行下面操作。
 
-`project.config.json` 已启用微信开发者工具的 TypeScript 编译插件 `useCompilerPlugins: ["typescript"]`。如果开发者工具仍提示 `pages/.../index.js` 不存在，请先确认已拉取最新 `main`，然后关闭项目并重新导入一次，让开发者工具重新读取项目配置。
+1. 微信开发者工具打开**仓库根目录**，读取根目录 `project.config.json`。
+2. 菜单执行 **工具 → 构建 npm**。
+3. 构建成功后应生成：
 
-如果随后提示 `tdesign-miniprogram/...` 组件不存在，说明 npm 依赖尚未生成：先在 `apps/miniprogram` 执行 `npm install`，再在微信开发者工具执行 **工具 → 构建 npm**。
+```text
+apps/miniprogram/miniprogram_npm/tdesign-miniprogram/
+```
 
-> 沙盒已验证 TDesign 1.16.0 包内 `button/tag/progress` 组件文件存在；但沙盒没有微信开发者工具，因此 T109 的“开发者工具实际导入/真机视觉验收”仍保持未完成状态。
+4. 再点击 **编译**。
+
+`project.config.json` 已启用：
+
+- TypeScript 编译插件；
+- `packNpmManually: true`；
+- `packNpmRelationList`，明确指定 `apps/miniprogram/package.json` → `apps/miniprogram/miniprogram_npm` 的构建关系。
+
+TDesign 官方要求安装完成后必须在微信开发者工具执行一次 **构建 npm**。如果模拟器提示 `tdesign-miniprogram/button/button 路径下未找到组件`，不要直接点编译反复重试，先确认上面的 `miniprogram_npm/tdesign-miniprogram` 目录已经生成。
+
+另外，TDesign 官方建议移除 `app.json` 的 `"style": "v2"`，当前工程已按该要求处理。
+
+当前 `appid` 为 `touristappid`，实际项目联调时替换为工会小程序 AppID。
+
+> 沙盒没有微信开发者工具，因此 T109 的“开发者工具实际导入/真机视觉验收”仍保持未完成状态。
 
 ## 目录
 
