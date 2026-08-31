@@ -1,0 +1,36 @@
+<view class="login-page safe-bottom">
+  <view class="login-hero">
+    <view class="brand-badge">工会服务 · 新就业形态劳动者</view>
+    <view class="brand-title">工惠新锋</view>
+    <view class="brand-subtitle">抢的是精神力量，得的是生活实惠，<br/>当的是骑士先锋。</view>
+
+    <view class="hero-visual">
+      <view class="city city-a"></view>
+      <view class="city city-b"></view>
+      <view class="city city-c"></view>
+      <view class="road"></view>
+      <view class="rider-card">
+        <view class="rider-mark">锋</view>
+        <view class="rider-copy">
+          <view class="rider-title">每日小确幸</view>
+          <view class="rider-sub">1 分钟学习 · 抢金币红包</view>
+        </view>
+      </view>
+      <view class="coin coin-one">+</view>
+      <view class="coin coin-two">¥</view>
+    </view>
+  </view>
+
+  <view class="login-panel">
+    <view class="panel-title">欢迎加入新锋骑士</view>
+    <view class="panel-desc">使用微信身份快速进入，首次登录需完成骑手身份认证。</view>
+    <view class="primary-button-wrap">
+      <t-button theme="primary" block size="large" disabled="{{!agreed}}" bind:tap="login">微信一键登录</t-button>
+    </view>
+    <view class="agreement" bind:tap="toggleAgree">
+      <view class="check {{agreed ? 'checked' : ''}}">{{agreed ? '✓' : ''}}</view>
+      <view class="agreement-text">我已阅读并同意 <text>《用户协议》</text> 和 <text>《隐私政策》</text></view>
+    </view>
+    <view class="prototype-note">当前为 Mock UI 原型，不读取真实微信用户数据</view>
+  </view>
+</view>

@@ -1,0 +1,68 @@
+.login-page { min-height: 100vh; background: #fff; }
+.login-hero {
+  position: relative;
+  min-height: 760rpx;
+  padding: 112rpx 52rpx 60rpx;
+  overflow: hidden;
+  background: linear-gradient(145deg, #c91f2c 0%, #e64032 55%, #f29a35 100%);
+  color: #fff;
+}
+.login-hero::after {
+  content: '';
+  position: absolute;
+  width: 560rpx;
+  height: 560rpx;
+  border-radius: 50%;
+  right: -230rpx;
+  top: -170rpx;
+  background: rgba(255,255,255,.09);
+}
+.brand-badge {
+  display: inline-flex;
+  height: 48rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  border-radius: 999rpx;
+  background: rgba(255,255,255,.15);
+  border: 1rpx solid rgba(255,255,255,.24);
+  font-size: 22rpx;
+}
+.brand-title { margin-top: 34rpx; font-size: 68rpx; font-weight: 800; letter-spacing: 4rpx; }
+.brand-subtitle { margin-top: 20rpx; font-size: 28rpx; line-height: 1.7; opacity: .88; }
+.hero-visual { position: relative; height: 310rpx; margin-top: 48rpx; }
+.city { position: absolute; bottom: 52rpx; background: rgba(255,255,255,.13); border-radius: 12rpx 12rpx 0 0; }
+.city-a { width: 120rpx; height: 130rpx; left: 0; }
+.city-b { width: 100rpx; height: 190rpx; left: 96rpx; }
+.city-c { width: 150rpx; height: 95rpx; right: 4rpx; }
+.road { position: absolute; left: -60rpx; right: -60rpx; bottom: 24rpx; height: 54rpx; transform: skewY(-4deg); background: rgba(71,24,24,.16); }
+.rider-card {
+  position: absolute;
+  left: 54rpx;
+  top: 38rpx;
+  width: 440rpx;
+  box-sizing: border-box;
+  padding: 24rpx;
+  border-radius: 26rpx;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,.94);
+  color: #25282d;
+  box-shadow: 0 24rpx 60rpx rgba(83,20,20,.22);
+  transform: rotate(-3deg);
+}
+.rider-mark { width: 84rpx; height: 84rpx; border-radius: 24rpx; background: #fff0ec; color: #d92b2b; display: flex; align-items: center; justify-content: center; font-size: 38rpx; font-weight: 800; }
+.rider-copy { margin-left: 20rpx; }
+.rider-title { font-weight: 800; font-size: 30rpx; }
+.rider-sub { margin-top: 8rpx; color: #7b818a; font-size: 22rpx; }
+.coin { position: absolute; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #ffd777; color: #ad5d0c; font-weight: 800; box-shadow: 0 10rpx 22rpx rgba(84,39,9,.18); }
+.coin-one { width: 54rpx; height: 54rpx; right: 64rpx; top: 12rpx; transform: rotate(12deg); }
+.coin-two { width: 68rpx; height: 68rpx; right: 18rpx; bottom: 70rpx; transform: rotate(-9deg); }
+.login-panel { margin-top: -30rpx; position: relative; z-index: 2; border-radius: 34rpx 34rpx 0 0; background: #fff; padding: 48rpx 52rpx 40rpx; }
+.panel-title { font-size: 38rpx; font-weight: 800; }
+.panel-desc { margin-top: 14rpx; color: var(--gx-text-2); line-height: 1.65; font-size: 25rpx; }
+.agreement { margin-top: 28rpx; display: flex; align-items: flex-start; }
+.check { flex: 0 0 auto; width: 34rpx; height: 34rpx; margin-top: 2rpx; border: 2rpx solid #c8ccd2; border-radius: 8rpx; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22rpx; }
+.check.checked { background: var(--gx-brand); border-color: var(--gx-brand); }
+.agreement-text { margin-left: 14rpx; color: var(--gx-text-3); font-size: 22rpx; line-height: 1.55; }
+.agreement-text text { color: var(--gx-brand); }
+.prototype-note { margin-top: 30rpx; text-align: center; color: #b1b5bb; font-size: 20rpx; }
