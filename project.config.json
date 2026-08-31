@@ -21,6 +21,7 @@
     "useApiHook": true,
     "useApiHostProcess": true,
     "showShadowRootInWxmlPanel": true,
+    "nodeModules": true,
     "packNpmManually": false,
     "enableEngineNative": false,
     "useIsolateContext": true,
@@ -30,12 +31,26 @@
     "localPlugins": false,
     "condition": false,
     "swc": false,
-    "disableSWC": true
+    "disableSWC": true,
+    "useCompilerPlugins": [
+      "typescript"
+    ],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "libVersion": "3.9.2",
   "appid": "touristappid",
   "projectname": "GongHuiXinFeng",
   "miniprogramRoot": "apps/miniprogram/",
-  "srcMiniprogramRoot": "apps/miniprogram/"
+  "srcMiniprogramRoot": "apps/miniprogram/",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }
