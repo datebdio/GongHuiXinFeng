@@ -1,0 +1,24 @@
+page {
+  --gx-brand: #d92b2b;
+  --td-brand-color: #d92b2b;
+  --td-brand-color-active: #b71f27;
+  --td-brand-color-disabled: #e7a0a4;
+  --td-brand-color-light: #fff0f0;
+  --td-button-border-radius: 20rpx;
+  --gx-brand-dark: #b71f27;
+  --gx-brand-soft: #fff0f0;
+  --gx-orange: #f28a26;
+  --gx-gold: #f2b84b;
+  --gx-text: #20242b;
+  --gx-text-2: #626a75;
+  --gx-text-3: #969da7;
+  --gx-line: #eceef2;
+  --gx-bg: #f6f7f9;
+  --gx-card: #ffffff;
+  --gx-success: #1d9b6c;
+  --gx-warning: #e58b24;
+  --gx-danger: #d92b2b;
+  --gx-radius: 24rpx;
+  --gx-radius-sm: 16rpx;
+  --gx-shadow: 0 10rpx 40rpx rgba(31, 35, 41, 0.06);
+}
