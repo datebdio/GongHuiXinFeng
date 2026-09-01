@@ -1,77 +1,56 @@
-<view class="page-shell home-page safe-bottom" wx:if="{{user && grab}}">
-  <view class="user-strip">
-    <view class="avatar">锋</view>
-    <view class="flex-1 user-copy">
-      <view class="row"><view class="user-name">{{user.nickname}}</view><view class="level-chip">{{user.level}}</view></view>
-      <view class="auth-line">认证状态：<text class="{{user.authStatus === 'VERIFIED' ? 'ok' : 'pending'}}">{{user.authStatus === 'VERIFIED' ? '已认证' : user.authStatus === 'PENDING' ? '审核中' : '待认证'}}</text></view>
+<view class="page-shell home-page-v2 safe-bottom" wx:if="{{user && grab}}">
+  <view class="profile-header">
+    <view class="avatar-v2">锋</view>
+    <view class="profile-main">
+      <view class="profile-name">{{user.nickname}}</view>
+      <view class="profile-meta">{{user.level}} · {{user.authStatus === 'VERIFIED' ? '已认证' : '审核中'}}</view>
     </view>
-    <view class="coin-box">
-      <view class="coin-number">{{user.coins}}</view>
-      <view class="coin-label">金币</view>
+    <view class="asset-box">
+      <view class="asset-label">新锋币</view>
+      <view class="asset-value">{{user.coins}}</view>
     </view>
   </view>
 
-  <view class="grab-card {{stateMeta.tone}}">
-    <view class="grab-top row between">
+  <view class="income-card">
+    <view class="income-title">今日服务收益</view>
+    <view class="income-value">¥{{user.todayIncome || '12.8'}}</view>
+    <view class="income-tip">完成任务，获得更多奖励</view>
+  </view>
+
+  <view class="task-card {{stateMeta.tone}}">
+    <view class="task-head">
       <view>
-        <view class="grab-kicker">今日抢单 · 工会知识任务</view>
-        <view class="grab-slot">{{grab.slot}}</view>
+        <view class="task-title">今日工会任务</view>
+        <view class="task-time">{{grab.slot}}</view>
       </view>
       <view class="state-badge">{{stateMeta.label}}</view>
     </view>
-
-    <view class="grab-main">
-      <view class="time-block">
-        <view class="time-label">{{grab.state === 'WAITING' ? '距离开抢' : grab.state === 'CLAIMED' ? '任务已保留' : '本场状态'}}</view>
-        <view class="time-value">{{grab.state === 'WAITING' ? countdownText : grab.state === 'OPEN' ? 'NOW' : stateMeta.label}}</view>
-      </view>
-      <view class="seat-block">
-        <view class="seat-value">{{grab.remainingSeats}}<text>/{{grab.totalSeats}}</text></view>
-        <view class="time-label">剩余名额</view>
-      </view>
+    <view class="task-info">
+      <view><text class="big-number">{{grab.remainingSeats}}</text><text class="small-text">/{{grab.totalSeats}} 名额</text></view>
+      <view class="count-text">{{grab.state === 'WAITING' ? countdownText : '立即参与'}}</view>
     </view>
-
-    <view class="grab-action">
-      <t-button theme="primary" block size="large" disabled="{{grab.state !== 'OPEN' && grab.state !== 'CLAIMED'}}" bind:tap="grabNow">{{stateMeta.action}}</t-button>
-      <view class="grab-hint">{{stateMeta.hint}}</view>
-    </view>
-    <view class="grab-glow glow-a"></view><view class="grab-glow glow-b"></view>
+    <t-button theme="primary" block size="large" disabled="{{grab.state !== 'OPEN' && grab.state !== 'CLAIMED'}}" bind:tap="grabNow">{{stateMeta.action}}</t-button>
   </view>
 
-  <view class="section-head"><view class="section-title">每日小确幸</view><view class="section-link" bind:tap="openLearn">全部学习 ></view></view>
-  <view class="learn-card card" bind:tap="openLearn">
-    <view class="learn-cover"><view class="play-ring">▶</view><view class="duration">01:00</view></view>
-    <view class="flex-1 learn-copy">
-      <view class="learn-tag">今日推荐 · 工会权益</view>
-      <view class="learn-title">跑在城市里，也要知道这些暖“新”权益</view>
-      <view class="learn-reward"><text>+5</text> 金币 · 学完可答题</view>
-    </view>
+  <view class="quick-grid">
+    <view class="quick-item" bind:tap="openLearn">每日学习</view>
+    <view class="quick-item">成长等级</view>
+    <view class="quick-item" bind:tap="openShop">福利商城</view>
   </view>
 
-  <view class="notice-card card">
-    <view class="notice-icon">讯</view>
-    <view class="flex-1 notice-copy"><view class="notice-kicker">政策速递</view><view class="notice-text">{{policy}}</view></view>
-    <view class="notice-arrow">›</view>
+  <view class="section-title">暖新资讯</view>
+  <view class="content-card" bind:tap="openLearn">
+    <view class="content-tag">工会权益</view>
+    <view class="content-title">跑在城市里，也要知道这些“新”权益</view>
+    <view class="content-reward">学习完成可获得金币奖励</view>
   </view>
 
-  <view class="section-head"><view class="section-title">今日抢单榜</view><view class="section-link">只展示脱敏昵称</view></view>
+  <view class="section-title">今日榜单</view>
   <view class="rank-card card">
     <view class="rank-row" wx:for="{{ranking}}" wx:key="rank">
-      <view class="rank-no rank-{{item.rank}}">{{item.rank}}</view>
-      <view class="flex-1"><view class="rank-name">{{item.name}}</view><view class="caption">{{item.level}}</view></view>
-      <view class="rank-score">{{item.score}}</view>
-    </view>
-  </view>
-
-  <view class="activity-card" bind:tap="openShop">
-    <view><view class="activity-kicker">工会暖心福利</view><view class="activity-title">金币攒起来，生活实惠换回家</view><view class="activity-link">去福利商城看看 →</view></view>
-    <view class="activity-stamp">惠</view>
-  </view>
-
-  <view class="debug-card">
-    <view class="debug-title">原型演示 · 快速切换抢单状态（T104）</view>
-    <view class="debug-states">
-      <view wx:for="{{demoStates}}" wx:key="key" class="debug-state {{grab.state === item.key ? 'active' : ''}}" data-state="{{item.key}}" bind:tap="switchDemoState">{{item.label}}</view>
+      <view class="rank-no">{{item.rank}}</view>
+      <view class="flex-1">{{item.name}}</view>
+      <view>{{item.score}}</view>
     </view>
   </view>
 </view>
